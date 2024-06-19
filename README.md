@@ -16,3 +16,4 @@ cantly reduce these redundancies. We propose two novel approaches that improve
 each of aspects, namely Hierarchical Keyframe Selector and Sequential Visual
 LLM. Our resulting framework termed LVNet achieves state-of-the-art performance
 across three benchmark LVQA datasets
+
