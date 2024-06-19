@@ -19,8 +19,6 @@ across three benchmark LVQA datasets
 
 ## Accuracy vs Captions
 - LVNet shows a SOTA 68.2% accuracy, merely at 12 captions.
-  - LifelongMemory accuracy is 26.4% at 39 captions dropping from 68.0% at 90 captions
-  - outperforms VideoAgent (60.2% at 8.4 captions) and MVU (60.3% at 16 captions).
 - The result highlights the quality of keyframes from the hierarchical keyframe selector.
 <img src="./figures/graph_old+new.png" alt="acc_captions" width="600"/>
 
@@ -38,4 +36,10 @@ across three benchmark LVQA datasets
 - Fine Keyframe Detector (FKD): Selects 12 frames by refining keyword alignments in  visual templates.
 <img src="./figures/qualitative_v2.png" alt="acc_captions" width="800"/>
 
+## Experiments: EgoSchema
+<img src="./tables/table_egoschema.png" alt="egoschema_table" width="600"/>
+## Experiments: NExT-QA
+<img src="./tables/table_nextQA.png" alt="nextQA_table" width="600"/>
+## Experiments: IntentQA
+<img src="./tables/table_intentQA.png" alt="intentQA_table" width="600"/>
 
