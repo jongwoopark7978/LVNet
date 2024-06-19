@@ -17,7 +17,7 @@ each of aspects, namely Hierarchical Keyframe Selector and Sequential Visual
 LLM. Our resulting framework termed LVNet achieves state-of-the-art performance
 across three benchmark LVQA datasets
 
-## Accuracy vs Captions on the EgoSchema subset
+## Accuracy vs Captions on the EgoSchema Subset
 - LVNet shows a SOTA 68.2% accuracy, merely at 12 captions.
 - The result highlights the quality of keyframes from the hierarchical keyframe selector.
 <img src="./figures/graph_old+new.png" alt="acc_captions" width="600"/>
