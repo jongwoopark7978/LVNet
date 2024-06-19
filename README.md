@@ -17,3 +17,25 @@ each of aspects, namely Hierarchical Keyframe Selector and Sequential Visual
 LLM. Our resulting framework termed LVNet achieves state-of-the-art performance
 across three benchmark LVQA datasets
 
+## Accuracy vs Captions
+- LVNet shows a SOTA 68.2% accuracy, merely at 12 captions.
+  - LifelongMemory accuracy is 26.4% at 39 captions dropping from 68.0% at 90 captions
+  - outperforms VideoAgent (60.2% at 8.4 captions) and MVU (60.3% at 16 captions).
+- The result highlights the quality of keyframes from the hierarchical keyframe selector.
+<img src="./figures/graph_old+new.png" alt="acc_captions" width="600"/>
+
+## Hierarchical Keyframe Selector: Structural Overview
+- Overall strategy: Generate captions by hierarchical keyframe selector and feed them to the separate LLM to answer the question.
+- Temporal Scene Clustering (TSC): Divides the long-video into scenes, enabling per-scene subsampling.
+- Coarse Keyframe Detector (CKD): Selects frames best-aligned with keywords relevant to the query.
+- Fine Keyframe detector (FKD): Selects frames by refining keyword alignements through a templated visual prompting.
+<img src="./figures/architecture.png" alt="acc_captions" width="800"/>
+
+## Hierarchical Keyframe Selector: Operational Visualization
+- Temporal Scene Clustering (TSC): 900 frames get clustered into scenes and uniformly subsampled within each scene to output around 280 frames.
+- Coarse Keyframe Detector (CKD): Coarse Keyframe Detector selects only 32 frames out of them, based on the alignment with keywords which are from options. 
+- Visual Templating: Coarsely refined keyframes are then ordered according to confidence values, and grouped them into 4 groups of 8 frames each. 
+- Fine Keyframe Detector (FKD): Selects 12 frames by refining keyword alignments in  visual templates.
+<img src="./figures/qualitative_v2.png" alt="acc_captions" width="800"/>
+
+
