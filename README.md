@@ -38,8 +38,10 @@ across three benchmark LVQA datasets
 
 ## Experiments: EgoSchema
 <img src="./tables/table_egoschema.png" alt="egoschema_table" width="600"/>
+
 ## Experiments: NExT-QA
 <img src="./tables/table_nextQA.png" alt="nextQA_table" width="600"/>
+
 ## Experiments: IntentQA
 <img src="./tables/table_intentQA.png" alt="intentQA_table" width="600"/>
 
