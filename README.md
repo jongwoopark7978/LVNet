@@ -52,3 +52,13 @@ across three benchmark LVQA datasets
 ## Experiments: IntentQA
 <img src="./tables/table_intentQA.png" alt="intentQA_table" width="600"/>
 
+
+# Citation
+```
+@inproceedings{Park2024TooMF,
+  title={Too Many Frames, not all Useful: Efficient Strategies for Long-Form Video QA},
+  author={Jongwoo Park and Kanchana Ranasinghe and Kumara Kahatapitiya and Wonjeong Ryoo and Donghyun Kim and Michael S. Ryoo},
+  year={2024}
+}
+```
+
