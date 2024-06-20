@@ -1,4 +1,11 @@
 # LVNet
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/too-many-frames-not-all-useful-efficient/zero-shot-video-question-answer-on-egoschema-1)](https://paperswithcode.com/sota/zero-shot-video-question-answer-on-egoschema-1?p=too-many-frames-not-all-useful-efficient)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/too-many-frames-not-all-useful-efficient/zero-shot-video-question-answer-on-intentqa)](https://paperswithcode.com/sota/zero-shot-video-question-answer-on-intentqa?p=too-many-frames-not-all-useful-efficient)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/too-many-frames-not-all-useful-efficient/zero-shot-video-question-answer-on-next-qa)](https://paperswithcode.com/sota/zero-shot-video-question-answer-on-next-qa?p=too-many-frames-not-all-useful-efficient)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/too-many-frames-not-all-useful-efficient/zero-shot-video-question-answer-on-egoschema)](https://paperswithcode.com/sota/zero-shot-video-question-answer-on-egoschema?p=too-many-frames-not-all-useful-efficient)
+
+
+Official Code for _"Too Many Frames, not all Useful: Efficient Strategies for Long-Form Video QA"_ paper. 
 
 ## Abstract
 Long-form videos that span across wide temporal intervals are highly information-
