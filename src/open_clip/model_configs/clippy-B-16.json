@@ -1,0 +1,17 @@
+{
+    "embed_dim": 768,
+    "vision_cfg": {
+        "timm_model_name": "vit_base_patch16_224_dino",
+        "timm_model_pretrained": true,
+        "timm_pool": "global_max",
+        "timm_proj": "linear",
+        "image_size": 224,
+        "patch_dropout": 0.5
+    },
+    "text_cfg": {
+        "hf_model_name": "sentence-transformers/sentence-t5-base",
+        "hf_tokenizer_name": "sentence-transformers/sentence-t5-base",
+        "proj": null,
+        "pooler_type": "mean_pooler"
+    }
+}

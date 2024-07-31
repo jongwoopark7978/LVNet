@@ -56,6 +56,35 @@ across three benchmark LVQA datasets
 <img src="./tables/table_intentQA.png" alt="intentQA_table" width="600"/>
 
 
+## Evaluation
+### Generate Answers Using LLM
+You can easily run the LLM to generate answers for the questions using the pre-generated captions.
+
+1. **Download the Captions for Dataset**
+
+* EgoSchema: `bash scripts/get_ES_captions.sh `
+
+2. **Run LLM** `bash scripts/eval_ES.sh`
+
+### Generate captions using our provided modules
+#### Hierarchical Keyframe Selector (HKS)
+- Temporal Scene Clustering (TSC): temporalSceneClustering.py </br>
+- Coarse Keyframe Detector (CKD): coarseKeyframeDetector.py </br>
+- Fine Keyframe detector (FKD): fineKeyframeDetector.py </br>
+
+1. **EgoSchema keyframe selection from images**: `bash config/run.sh `
+
+2. **Generate captions based on the keyframes**: `bash scripts/create_caption.sh`
+
+## Data
+### Hierarchical Keyframe Selector hyper-parameters & paths
+- [[LINK]](config/config.py)
+
+### coarseKeyframeDetector.py CLIP model checkpoint
+- ICCV 2023 [Perceptual Grouping in Contrastive Vision-Language Models](https://arxiv.org/abs/2210.09996)
+- Checkpoint: [Download](https://github.com/kahnchana/clippy/releases/download/v1.0/clippy_5k.pt)
+
+
 # Citation
 ```
 @inproceedings{Park2024TooMF,
