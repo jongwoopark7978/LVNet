@@ -42,12 +42,12 @@ across three benchmark LVQA datasets
 ## Hierarchical Keyframe Selector: Operational Visualization
 - Temporal Scene Clustering (TSC): 900 frames get clustered into scenes and uniformly subsampled within each scene to output around 280 frames.
 - Coarse Keyframe Detector (CKD): Coarse Keyframe Detector selects only 32 frames out of them, based on the alignment with keywords which are from options. 
-- Visual Templating: Coarsely refined keyframes are then ordered according to confidence values, and grouped them into 4 groups of 8 frames each. 
+- Visual Templating: Coarsely refined keyframes are then ordered according to confidence scores and temporal orders, and grouped them into 4 groups of 8 frames each. 
 - Fine Keyframe Detector (FKD): Selects 12 frames by refining keyword alignments in  visual templates.
 <img src="./figures/architecture_qualitative.png" alt="acc_captions" width="800"/>
 
 ## Experiments: EgoSchema, NExT-QA, and IntentQA
-- LVNet achieves state-of-the-art accuracies of 71.7%, 61.1%, and 72.9% on the three datasets,
+- LVNet achieves state-of-the-art accuracies of 61.1%, 72.9%, and 71.7%  on the three datasets,
 respectively, using just 12 frames compared to the models using the similar number of captions.
 - Models with video-caption pretraining or utilizing significantly more captions than the 12 frames used
 by LVNet are de-emphasized in grey or downplayed in light green to ensure fairness with image-level
