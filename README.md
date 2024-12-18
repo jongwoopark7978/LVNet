@@ -4,9 +4,9 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/too-many-frames-not-all-useful-efficient/zero-shot-video-question-answer-on-next-qa)](https://paperswithcode.com/sota/zero-shot-video-question-answer-on-next-qa?p=too-many-frames-not-all-useful-efficient)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/too-many-frames-not-all-useful-efficient/zero-shot-video-question-answer-on-egoschema)](https://paperswithcode.com/sota/zero-shot-video-question-answer-on-egoschema?p=too-many-frames-not-all-useful-efficient)
 
-Official Code for _"Too Many Frames, not all Useful: Efficient Strategies for Long-Form Video QA"_ paper.
+Official Code for **_Too Many Frames, Not All Useful_: Efficient Strategies for Long-Form Video QA**
 
-The code will be released soon.
+It is accepted in the workshop on Video-Language Models at **NeurIPS 2024**
 
 [Paper Link](https://arxiv.org/abs/2406.09396) 
 
@@ -52,7 +52,7 @@ respectively, using just 12 frames compared to the models using the similar numb
 - Models with video-caption pretraining or utilizing significantly more captions than the 12 frames used
 by LVNet are de-emphasized in grey or downplayed in light green to ensure fairness with image-level
 pretraining or highlight caption efficiency.
-<img src="./tables/table_combined.png" alt="egoschema_table" width="600"/>
+<img src="./tables/table_combined.png" alt="egoschema_table" width="900"/>
 
 
 ## Evaluation
