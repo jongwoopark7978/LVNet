@@ -6,8 +6,6 @@
 
 Official Code for **_Too Many Frames, Not All Useful_: Efficient Strategies for Long-Form Video QA**
 
-It is accepted in the workshop on Video-Language Models at **NeurIPS 2024**
-
 [Paper Link](https://arxiv.org/abs/2406.09396) 
 
 ## Abstract
