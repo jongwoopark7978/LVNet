@@ -6,6 +6,8 @@
 
 Official Code for **_Too Many Frames, Not All Useful_: Efficient Strategies for Long-Form Video QA**
 
+It is accepted in the workshop on Video-Language Models at **NeurIPS 2024**
+
 [Paper Link](https://arxiv.org/abs/2406.09396) 
 
 ## Abstract
@@ -35,7 +37,7 @@ across three benchmark LVQA datasets
 - Temporal Scene Clustering (TSC): Divides the long-video into scenes, enabling per-scene subsampling.
 - Coarse Keyframe Detector (CKD): Selects frames best-aligned with keywords relevant to the query.
 - Fine Keyframe detector (FKD): Selects frames by refining keyword alignements through a templated visual prompting.
-<img src="./figures/overview_kfd_mid.png" alt="acc_captions" width="800"/>
+<img src="./figures/architecture.png" alt="acc_captions" width="600"/>
 
 ## Hierarchical Keyframe Selector: Operational Visualization
 - Temporal Scene Clustering (TSC): 900 frames get clustered into scenes and uniformly subsampled within each scene to output around 280 frames.
@@ -52,6 +54,9 @@ by LVNet are de-emphasized in grey or downplayed in light green to ensure fairne
 pretraining or highlight caption efficiency.
 <img src="./tables/table_combined.png" alt="egoschema_table" width="900"/>
 
+## Experiments: Comparison with Other Keyframe Selection Methods
+This Figure compares LVNet and VideoAgent. **LVNet starts with uniformly sampled frames, then selects keyframes non-uniformly** through TSC, CKD, and FKD to highlight relevant content. This yields 12 frames, 8 of which show “phone usage,” the correct activity. In contrast, **VideoAgent continues uniform sampling** due to insufficient initial frames, yeilding 0 relevant frames out of 9 and ultimately choosing the wrong answer.<br><br>
+<img src="./figures/KFSelectionFlowComparison.jpg" alt="egoschema_table" width="900"/>
 
 ## Evaluation
 ### Generate Answers Using LLM
