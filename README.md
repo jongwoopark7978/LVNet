@@ -54,7 +54,7 @@ by LVNet are de-emphasized in grey or downplayed in light green to ensure fairne
 pretraining or highlight caption efficiency.
 <img src="./tables/table_combined.png" alt="egoschema_table" width="900"/>
 
-## Experiments: Comparison with Other Keyframe Selection Methods
+## Comparison with Other Keyframe Selection Methods
 This Figure compares LVNet and VideoAgent. **LVNet starts with uniformly sampled frames, then selects keyframes non-uniformly** through TSC, CKD, and FKD to highlight relevant content. This yields 12 frames, 8 of which show “phone usage,” the correct activity. In contrast, **VideoAgent continues uniform sampling** due to insufficient initial frames, yeilding 0 relevant frames out of 9 and ultimately choosing the wrong answer.<br><br>
 <img src="./figures/KFSelectionFlowComparison.jpg" alt="egoschema_table" width="900"/>
 
