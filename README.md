@@ -8,7 +8,7 @@ Official Code for **_Too Many Frames, Not All Useful_: Efficient Strategies for 
 
 It is accepted in the 9 pages workshop on Video-Language Models at **NeurIPS 2024**
 
-[Paper Link](https://arxiv.org/abs/2406.09396) | [Daily Papers in HF](https://huggingface.co/papers/2406.09396) | [Model Ckpt](https://huggingface.co/jongwoopark7978/LVNet)
+[Paper Link](https://arxiv.org/abs/2406.09396) | [Daily Papers in HF](https://huggingface.co/papers/2406.09396) | [Model](https://huggingface.co/jongwoopark7978/LVNet)
 
 ## Abstract
 Long-form videos that span across wide temporal intervals are highly information-
