@@ -18,7 +18,7 @@ def refine_answer():
     kflen_group = kflen // num_group
     for video_ in tqdm(videos):
         VLM_path     = []
-        VLM_timeline = []
+        # VLM_timeline = []
         VLM_images   = []
         VLM_keyword  = [] 
         idx_list     = [e for e in range(8)] 
@@ -26,7 +26,7 @@ def refine_answer():
         q_uid             = video_['q_uid']
         concatimgs        = video_['output_VLM']
         kf_paths_VLM      = video_['kf_paths_VLM']
-        kf_timeline       = video_['kf_timeline']
+        # kf_timeline       = video_['kf_timeline']
         kw_perconcat_clip = video_["kw_perconcat_clip"]
 
         for idx_concat, concatimg in enumerate(concatimgs):
@@ -67,17 +67,17 @@ def refine_answer():
 
             for e in VLM_images_iter:
                 VLM_path.append(kf_paths_VLM[idx_concat][e][0])
-                VLM_timeline.append(kf_timeline[idx_concat][e])
+                # VLM_timeline.append(kf_timeline[idx_concat][e])
                 VLM_images.append(e)
                 VLM_keyword.append(kw_perconcat_clip[idx_concat][e][0])
 
         video_["VLM_path"]     = VLM_path
-        video_["VLM_timeline"] = VLM_timeline
+        # video_["VLM_timeline"] = VLM_timeline
         video_["VLM_images"]   = VLM_images
         video_["VLM_keyword"]  = VLM_keyword
 
         video_.pop("kf_paths_VLM", None)
-        video_.pop("kf_timeline",  None)
+        # video_.pop("kf_timeline",  None)
         outfile.write(json.dumps(video_) + "\n")
 
     outfile.close()
