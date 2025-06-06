@@ -12,8 +12,8 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 
 from config import config
-from src.refine import refine_answer
-from src.run_gpt import run_gpt
+from llava.refine import refine_answer
+from llava.run_gpt import run_gpt
 
 class CustomDatasetGPT(Dataset):
     def __init__(self, questions, num_input_imgs, num_select):
@@ -43,7 +43,7 @@ class CustomDatasetGPT(Dataset):
         kw_perconcat        = []
         kf_paths_perconcat  = []
         simvalue_perconcat  = []
-        segment_timeline    = []
+        # segment_timeline    = []
 
         for concatidx, img_path in enumerate(concatimg_paths):
             concatimages.append(Image.open(img_path).convert('RGB'))
@@ -59,7 +59,7 @@ class CustomDatasetGPT(Dataset):
             qs_org.append(qs_org_)
             kf_paths_perconcat.append(kf_paths[kw_sidx:kw_eidx])
             simvalue_perconcat.append(simvalue[kw_sidx:kw_eidx])
-            segment_timeline.append(line["segment_timeline"])
+            # segment_timeline.append(line["segment_timeline"])
 
         concatimg_paths     = concatimg_paths[-num_groups:]
         concatimages_base64 = concatimages_base64[-num_groups:] 
@@ -67,9 +67,10 @@ class CustomDatasetGPT(Dataset):
         kw_perconcat        = kw_perconcat[-num_groups:]
         kf_paths_perconcat  = kf_paths_perconcat[-num_groups:]
         simvalue_perconcat  = simvalue_perconcat[-num_groups:]
-        segment_timeline    = segment_timeline[-num_groups:]
+        # segment_timeline    = segment_timeline[-num_groups:]
 
-        return concatimages_base64, concatimages[0].size, kw_perconcat, kf_paths_perconcat, qs_org, segment_timeline, concatimg_paths, simvalue_perconcat
+        # return concatimages_base64, concatimages[0].size, kw_perconcat, kf_paths_perconcat, qs_org, segment_timeline, concatimg_paths, simvalue_perconcat
+        return concatimages_base64, concatimages[0].size, kw_perconcat, kf_paths_perconcat, qs_org, concatimg_paths, simvalue_perconcat
 
     def __len__(self):
         return len(self.questions)
@@ -119,27 +120,28 @@ def eval_model():
     data_loader, dataset = create_data_loader_gpt(questions, num_input_imgs, num_select)
 
     outputs = ""
-    for (image_paths, image_sizes, kw_perconcat, kf_paths_perconcat, cur_prompts, segment_timeline, concatimg_paths, simvalue_perconcat), line in tqdm(zip(data_loader, questions), total=len(questions)):
+    # for (image_paths, image_sizes, kw_perconcat, kf_paths_perconcat, cur_prompts, segment_timeline, concatimg_paths, simvalue_perconcat), line in tqdm(zip(data_loader, questions), total=len(questions)):
+    for (image_paths, image_sizes, kw_perconcat, kf_paths_perconcat, cur_prompts, concatimg_paths, simvalue_perconcat), line in tqdm(zip(data_loader, questions), total=len(questions)):
         idx, q_uid = line["q_uid"], line["q_uid"]
         CA         = line["CA"] if "CA" in line else None
-        option0    = line['option 0']
-        option1    = line['option 1']
-        option2    = line['option 2']
-        option3    = line['option 3']
-        option4    = line['option 4']
+        # option0    = line['option 0']
+        # option1    = line['option 1']
+        # option2    = line['option 2']
+        # option3    = line['option 3']
+        # option4    = line['option 4']
         question   = line['question']
 
         pastobj           = None
         past_VLM_path     = None
-        past_VLM_timeline = None
+        # past_VLM_timeline = None
 
         kw_VLM       = []
         kf_paths_VLM = []
-        kf_timeline  = []
+        # kf_timeline  = []
 
         kw_VLM_ordered       = []
         kf_paths_VLM_ordered = []
-        kf_timeline_ordered  = []
+        # kf_timeline_ordered  = []
 
         prompts     = [x[0] for x in cur_prompts]
         image_paths = [x[0] for x in image_paths]
@@ -161,20 +163,20 @@ def eval_model():
 
         for j, _ in enumerate(cur_prompts):
             kf_paths_perconcat_ = kf_paths_perconcat[j]
-            kf_timeline.append([f"{e[0].split('_')[-2]}.{e[0].split('_')[-1].split('.')[0]}" for e in kf_paths_perconcat_])
+            # kf_timeline.append([f"{e[0].split('_')[-2]}.{e[0].split('_')[-1].split('.')[0]}" for e in kf_paths_perconcat_])
 
         line_frame                      = line.copy()
 
         line_frame["output_VLM"]        = output_VLM
         line_frame["concatimg_paths"]   = concatimg_paths
         line_frame["kf_paths_VLM"]      = kf_paths_perconcat
-        line_frame["kf_timeline"]       = kf_timeline
+        # line_frame["kf_timeline"]       = kf_timeline
         line_frame["kw_perconcat_clip"] = kw_perconcat
         line_frame["iter"]              = giter
 
         line_frame.pop("filepath")
         line_frame.pop("kf_paths")
-        line_frame.pop("google_drive_id")
+        # line_frame.pop("google_drive_id")
 
         try: ans_file.write(json.dumps(line_frame) + "\n")
         except: assert False, f"line_frame:{line_frame}"
@@ -186,4 +188,5 @@ def eval_model():
 
 if __name__ == "__main__":
     eval_model()
+    os.makedirs(os.path.dirname(config.refine_output_path), exist_ok=True)
     refine_answer()

@@ -14,7 +14,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 
 from config import config
-from src.open_clip import create_model_and_transforms
+from llava.open_clip import create_model_and_transforms
 
 
 class loading_img(Dataset):
@@ -63,19 +63,20 @@ class CustomDataset(Dataset):
 
         img_paths = []
         for img_path in nframes_paths:
-            img_path = self.base_dir + "/" + "/".join(img_path.split("/")[-4:])
+            # img_path = "/" + "/".join(img_path.split("/")[-4:])
             img_paths.append(img_path)
 
             img_names.append(img_path.split('/')[-1].split('.')[0])
             cur_img = Image.open(img_path).resize(clip_size)
             image_list.append(preprocess_val(cur_img))
 
-            timeline = f"{img_names[-1].split('_')[-2]}.{img_names[-1].split('_')[-1]} seconds"
-            timeline_int = float(f"{img_names[-1].split('_')[-2]}.{img_names[-1].split('_')[-1]}")
-            timelines.append(timeline)
-            timelines_int.append(timeline_int)
+            # timeline = f"{img_names[-1].split('_')[-2]}.{img_names[-1].split('_')[-1]} seconds"
+            # timeline_int = float(f"{img_names[-1].split('_')[-2]}.{img_names[-1].split('_')[-1]}")
+            # timelines.append(timeline)
+            # timelines_int.append(timeline_int)
 
-        return image_list, img_paths, timelines, timelines_int, keywords, img_names
+        # return image_list, img_paths, timelines, timelines_int, keywords, img_names
+        return image_list, img_paths, keywords, img_names
 
     def __len__(self):
         return len(self.questions)
@@ -157,14 +158,16 @@ def eval_model():
         concatimg_dir_base = f"{concatdir}"
 
         with torch.no_grad():
-            for (image_list, nframes_paths, timelines, timelines_int, keywords, img_names), line in tqdm(zip(data_loader, questions), total=len(questions)):
+            # for (image_list, nframes_paths, timelines, timelines_int, keywords, img_names), line in tqdm(zip(data_loader, questions), total=len(questions)):
+            for (image_list, nframes_paths, keywords, img_names), line in tqdm(zip(data_loader, questions), total=len(questions)):
                 q_uid = line["q_uid"]
                 CA = line["CA"] if "CA" in line else None
-                option0 = line['option 0']
-                option1 = line['option 1']
-                option2 = line['option 2']
-                option3 = line['option 3']
-                option4 = line['option 4']
+                # NOTE: What is option 0 1 2 3 4?
+                # option0 = line['option 0']
+                # option1 = line['option 1']
+                # option2 = line['option 2']
+                # option3 = line['option 3']
+                # option4 = line['option 4']
                 question = line['question']
 
                 pastobj = None
@@ -197,21 +200,21 @@ def eval_model():
                 kf_paths = np.array([e["kf_path"] for e in imgidx_kw_dict.values()])[ordered_idx]
                 matchingkw = np.array([e["kw"] for e in imgidx_kw_dict.values()])[ordered_idx]
 
-                #order by timeline
-                time_kf_paths = np.array(kf_paths[:16])
-                timelines_int = np.array([float(f"{e.replace('.jpg', '').split('/')[-1].split('_')[1]}" + "."+ f"{e.replace('.jpg', '').split('/')[-1].split('_')[2]}") for e in time_kf_paths])
-                time_ordered_idx = np.argsort(timelines_int)
+                # #order by timeline
+                # time_kf_paths = np.array(kf_paths[:16])
+                # timelines_int = np.array([float(f"{e.replace('.jpg', '').split('/')[-1].split('_')[1]}" + "."+ f"{e.replace('.jpg', '').split('/')[-1].split('_')[2]}") for e in time_kf_paths])
+                # time_ordered_idx = np.argsort(timelines_int)
 
-                timelines_int = timelines_int[time_ordered_idx]
-                time_simvalue = np.array(simvalue[:16])[time_ordered_idx]
-                time_kf_paths = np.array(time_kf_paths)[time_ordered_idx]
-                time_matchingkw = np.array(matchingkw[:16])[time_ordered_idx]
+                # timelines_int = timelines_int[time_ordered_idx]
+                # time_simvalue = np.array(simvalue[:16])[time_ordered_idx]
+                # time_kf_paths = np.array(time_kf_paths)[time_ordered_idx]
+                # time_matchingkw = np.array(matchingkw[:16])[time_ordered_idx]
 
-                simvalue[:16] = time_simvalue
-                kf_paths[:16] = time_kf_paths
-                matchingkw[:16] = time_matchingkw
+                # simvalue[:16] = time_simvalue
+                # kf_paths[:16] = time_kf_paths
+                # matchingkw[:16] = time_matchingkw
 
-                segment_timeline = f"{timelines[0][0].split(' seconds')[0]}-{timelines[-1][0].split(' seconds')[0]}"
+                # segment_timeline = f"{timelines[0][0].split(' seconds')[0]}-{timelines[-1][0].split(' seconds')[0]}"
 
                 imgw, imgh = Image.open(kf_paths[0]).size
                 redwidth = 20
@@ -242,7 +245,7 @@ def eval_model():
                 line["keywords"] = matchingkw.tolist()
                 line["simvalue"] = simvalue.tolist()
                 line["imgidx_kw_dict"] = imgidx_kw_dict
-                line["segment_timeline"] = segment_timeline
+                # line["segment_timeline"] = segment_timeline
                 line["concatimg_dir"] = concatimg_dir
 
                 ans_file.write(json.dumps(line) + "\n")
