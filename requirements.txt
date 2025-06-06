@@ -22,3 +22,5 @@ shutil
 PIL
 natsort
 clip
+
+git+https://github.com/vimalabs/VimaBench.git
