@@ -7,8 +7,8 @@ base_dir = "your_path" # your data path ex) img_folder_path/egoschema
 
 # scene clustering
 divlam     = 12
-f_path     = "your_path" # files from keywords dir
-q_path     = "your_path" # files from questions dir
+f_path     = "your_path" # reorg QC filter json path
+q_path     = "your_path" # init_question json path
 a_path     = "your_path"
 img_folder = "your_path" # your img folder path ex) img_folder_path/egoschema/frames_900_4531/q_uid/image_sec_millisec.jpg
 

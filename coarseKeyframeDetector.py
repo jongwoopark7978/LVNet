@@ -94,7 +94,7 @@ def SortSimilarity(q_uid, simmat, keywords, nimgtokens, nframes_paths, maximgsle
     imgidx_kw_dict = dict()
     numrow, numcol = sort_simmat.shape
     
-    row_col_list = [0 for _ in range(numrow)]
+    row_col_list = [0 for _ in range(numrow)] # ??? recheck this
     token = True
 
     while token:
