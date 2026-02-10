@@ -107,9 +107,10 @@ You can easily run the LLM to generate answers for the questions using the pre-g
 
 # Citation
 ```
-@inproceedings{Park2024TooMF,
+@inproceedings{Park26LVNet,
   title={Too Many Frames, not all Useful: Efficient Strategies for Long-Form Video QA},
   author={Jongwoo Park and Kanchana Ranasinghe and Kumara Kahatapitiya and Wonjeong Ryoo and Donghyun Kim and Michael S. Ryoo},
-  year={2024}
+  booktitle={European Chapter of the Association for Computational Linguistics}, 
+  year={2026}
 }
 ```
